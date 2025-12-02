@@ -19,6 +19,8 @@
             align-items: center;
             height: auto;
             padding: 40px 20px;
+
+            overflow: hidden;
         }
 
         .container {
@@ -32,7 +34,7 @@
             font-size: 2.5em;
             font-weight: 600;
             margin-bottom: 20px;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
         }
 
         .subtitle {
@@ -42,12 +44,18 @@
             margin-bottom: 60px;
         }
 
+        .subtitle span {
+            white-space: nowrap;
+        }
+
         .mockup-container {
             position: relative;
             display: flex;
             justify-content: center;
             align-items: center;
             flex-wrap: wrap;
+
+            gap: 20px;
         }
 
         /* Admin in Background */
@@ -67,7 +75,7 @@
             background: #2a2a2a;
             border-radius: 12px;
             padding: 15px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
         }
 
         .admin-layer img {
@@ -93,7 +101,7 @@
             background: #2a2a2a;
             border-radius: 20px;
             padding: 20px;
-            box-shadow: 0 25px 80px rgba(0,0,0,0.6);
+            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.6);
             max-width: 600px;
             position: relative;
         }
@@ -127,13 +135,17 @@
         /* Arrow */
         .arrow {
             color: #4A90E2;
-            font-size: 4em;
+            font-size: 3em;
             font-weight: 300;
+        }
+
+        .arrow-1 {
+            visibility: hidden;
         }
 
         /* Monitors */
         .monitors {
-            width:100%;
+            width: 100%;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -141,12 +153,13 @@
         }
 
         .monitor {
+            width: 80%;
             background: #1a1a1a;
             border-radius: 12px;
             padding: 12px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
             position: relative;
-            width: 80%;
+
             max-width: 350px;
         }
 
@@ -181,7 +194,7 @@
             position: absolute;
             top: -15px;
             right: -15px;
-            background: linear-gradient(135deg, #4A90E2  0%, #4A90E2 100%);
+            background: linear-gradient(135deg, #4A90E2 0%, #4A90E2 100%);
             color: white;
             padding: 8px 16px;
             border-radius: 20px;
@@ -191,27 +204,76 @@
             z-index: 10;
         }
 
-        @media (max-width: 1100px) {
-            .frontend-layer {flex-direction: column;}
-            .arrow {transform: rotate(90deg);}
-            .admin-layer {position: relative; filter: none; opacity: 1; max-width: 700px; top: 0;
-                left: 0; transform: none; width: 100%}
+        @media (max-width: 1078px) {
+            .mockup-container{
+                flex-direction: column;
+            }
+            .frontend-layer {
+                flex-direction: column;
+                margin-top: 0;
+            }
+
+            .arrow {
+                transform: rotate(90deg);
+            }
+
+            .arrow-1 {
+                visibility: visible;
+            }
+
+            .admin-layer {
+                position: relative;
+                filter: none;
+                opacity: 1;
+                max-width: 700px;
+                top: 0;
+                left: 0;
+                transform: none;
+                width: 100%
+            }
         }
 
         @media (max-width: 768px) {
-            .title { font-size: 1.8em; }
-            .subtitle { font-size: 1.3em; }
-            .device-label {font-size: 0.8em; font-weight: 400}
-            .monitor-label {font-size: 0.7em; font-weight: 300}
-            .sync-badge {font-size: 0.7em; font-weight: 300}
-            .guide-device {padding: 10px}
-            .admin-layer device {padding: 8px}
+            .title {
+                font-size: 1.8em;
+            }
+
+            .subtitle {
+                font-size: 0.8em;
+            }
+
+            .arrow{
+                font-size: 2em;
+            }
+
+            .device-label {
+                font-size: 0.8em;
+                font-weight: 400
+            }
+
+            .monitor-label {
+                font-size: 0.7em;
+                font-weight: 300
+            }
+
+            .sync-badge {
+                font-size: 0.7em;
+                font-weight: 300
+            }
+
+            .guide-device {
+                padding: 10px
+            }
+
+            .admin-layer device {
+                padding: 8px
+            }
         }
     </style>
 </head>
 <body>
 <div class="container">
-    <p class="subtitle">Zentrale Verwaltung → Tablet-Steuerung → Synchrone Wiedergabe</p>
+    <p class="subtitle"><span>Zentrale Verwaltung</span> <span>→ Tablet-Steuerung</span> <span>→ Synchrone Wiedergabe</span></p>
 
     <div class="mockup-container">
         <!-- Admin Background Layer -->
@@ -221,6 +283,9 @@
                 <img src="musea-admin.png" alt="Admin Interface" id="adminImg">
             </div>
         </div>
+
+        <!-- Arrow 1 -->
+        <div class="arrow arrow-1">→</div>
 
         <!-- Frontend Layer -->
         <div class="frontend-layer">
@@ -232,7 +297,7 @@
                 </div>
             </div>
 
-            <!-- Arrow -->
+            <!-- Arrow 2 -->
             <div class="arrow">→</div>
 
             <!-- Monitors -->
