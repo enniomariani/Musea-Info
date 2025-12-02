@@ -22,9 +22,8 @@
         }
 
         .container {
-            max-width: 1400px;
             width: 100%;
-            position: relative;
+            height: 100%;
         }
 
         .title {
@@ -84,7 +83,6 @@
             left: 50%;
             transform: translateX(-50%);
             color: white;
-            padding: 8px 20px;
             font-size: 1.3em;
             font-weight: 600;
         }
@@ -95,7 +93,7 @@
             z-index: 2;
             display: flex;
             align-items: center;
-            gap: 60px;
+            gap: 20px;
             flex-wrap: wrap;
             justify-content: center;
             margin-top: 80px;
@@ -139,15 +137,9 @@
 
         /* Arrow */
         .arrow {
-            color: #4A90E2      ;
+            color: #4A90E2;
             font-size: 4em;
             font-weight: 300;
-            animation: pulse 2s ease-in-out infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 0.6; transform: translateX(0); }
-            50% { opacity: 1; transform: translateX(10px); }
         }
 
         /* Monitors */
@@ -206,17 +198,17 @@
             z-index: 10;
         }
 
-        @media (max-width: 1200px) {
-            .arrow { display: none; }
-            .frontend-layer { gap: 40px; }
+        @media (max-width: 1000px) {
+            .frontend-layer {flex-direction: column;}
+            .arrow {
+                transform: rotate(90deg); /* Rotate and keep translateX */
+            }
         }
 
         @media (max-width: 768px) {
             .title { font-size: 1.8em; }
             .subtitle { font-size: 1.3em; }
             .monitor img { width: 250px; }
-            .admin-layer { display: none; }
-            .frontend-layer { margin-top: 20px; }
         }
     </style>
 </head>
@@ -229,7 +221,7 @@
         <div class="admin-layer">
             <div class="admin-label">Musea Admin</div>
             <div class="device">
-                <img src="musea-admin.png   " alt="Admin Interface" id="adminImg">
+                <img src="musea-admin.png" alt="Admin Interface" id="adminImg">
             </div>
         </div>
 
