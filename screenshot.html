@@ -47,7 +47,6 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 40px;
             flex-wrap: wrap;
         }
 
@@ -75,16 +74,6 @@
             width: 100%;
             border-radius: 8px;
             display: block;
-        }
-
-        .admin-label {
-            position: absolute;
-            top: -40px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: white;
-            font-size: 1.3em;
-            font-weight: 600;
         }
 
         /* Frontend Layer */
@@ -144,8 +133,10 @@
 
         /* Monitors */
         .monitors {
+            width:100%;
             display: flex;
             flex-direction: column;
+            align-items: center;
             gap: 30px;
         }
 
@@ -155,6 +146,8 @@
             padding: 12px;
             box-shadow: 0 20px 60px rgba(0,0,0,0.5);
             position: relative;
+            width: 80%;
+            max-width: 350px;
         }
 
         .monitor::after {
@@ -170,7 +163,7 @@
         }
 
         .monitor img {
-            width: 350px;
+            width: 100%;
             height: auto;
             border-radius: 8px;
             display: block;
@@ -200,15 +193,19 @@
 
         @media (max-width: 1100px) {
             .frontend-layer {flex-direction: column;}
-            .arrow {
-                transform: rotate(90deg); /* Rotate and keep translateX */
-            }
+            .arrow {transform: rotate(90deg);}
+            .admin-layer {position: relative; filter: none; opacity: 1; max-width: 700px; top: 0;
+                left: 0; transform: none; width: 100%}
         }
 
         @media (max-width: 768px) {
             .title { font-size: 1.8em; }
             .subtitle { font-size: 1.3em; }
-            .monitor img { width: 250px; }
+            .device-label {font-size: 0.8em; font-weight: 400}
+            .monitor-label {font-size: 0.7em; font-weight: 300}
+            .sync-badge {font-size: 0.7em; font-weight: 300}
+            .guide-device {padding: 10px}
+            .admin-layer device {padding: 8px}
         }
     </style>
 </head>
@@ -219,7 +216,7 @@
     <div class="mockup-container">
         <!-- Admin Background Layer -->
         <div class="admin-layer">
-            <div class="admin-label">Musea Admin</div>
+            <div class="device-label">Musea Admin</div>
             <div class="device">
                 <img src="musea-admin.png" alt="Admin Interface" id="adminImg">
             </div>
@@ -256,15 +253,5 @@
         </div>
     </div>
 </div>
-
-<script>
-
-    // Note: In actual implementation, replace the placeholder images above
-    // For now, using solid colors as fallback
-    document.getElementById('guideImg').style.background = '#2a2a2a';
-    document.getElementById('adminImg').style.background = '#2a2a2a';
-    document.getElementById('display1').style.background = '#000';
-    document.getElementById('display2').style.background = '#000';
-</script>
 </body>
 </html>
