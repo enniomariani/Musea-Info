@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Musea System Mockup</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #101E30 0%, #1E3B5D 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            width: 100%;
+            position: relative;
+        }
+
+        .title {
+            text-align: center;
+            color: white;
+            font-size: 2.5em;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #a0a0a0;
+            font-size: 1.2em;
+            margin-bottom: 60px;
+        }
+
+        .mockup-container {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        /* Admin in Background */
+        .admin-layer {
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0.2;
+            filter: blur(0px);
+            z-index: 1;
+            width: 90%;
+            max-width: 800px;
+        }
+
+        .admin-layer .device {
+            background: #2a2a2a;
+            border-radius: 12px;
+            padding: 15px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+        }
+
+        .admin-layer img {
+            width: 100%;
+            border-radius: 8px;
+            display: block;
+        }
+
+        .admin-label {
+            position: absolute;
+            top: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            padding: 8px 20px;
+            font-size: 1.3em;
+            font-weight: 600;
+        }
+
+        /* Frontend Layer */
+        .frontend-layer {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 80px;
+        }
+
+        /* Guide Tablet */
+        .guide-device {
+            background: #2a2a2a;
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 25px 80px rgba(0,0,0,0.6);
+            max-width: 600px;
+            position: relative;
+        }
+
+        .guide-device::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 6px;
+            background: #1a1a1a;
+            border-radius: 3px;
+        }
+
+        .guide-device img {
+            width: 100%;
+            border-radius: 12px;
+            display: block;
+        }
+
+        .device-label {
+            text-align: center;
+            padding-bottom: 10px;
+            color: white;
+            font-weight: 600;
+            font-size: 1.3em;
+        }
+
+        /* Arrow */
+        .arrow {
+            color: #4A90E2      ;
+            font-size: 4em;
+            font-weight: 300;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.6; transform: translateX(0); }
+            50% { opacity: 1; transform: translateX(10px); }
+        }
+
+        /* Monitors */
+        .monitors {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .monitor {
+            background: #1a1a1a;
+            border-radius: 12px;
+            padding: 12px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+            position: relative;
+        }
+
+        .monitor::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 20px;
+            background: #0a0a0a;
+            border-radius: 0 0 8px 8px;
+        }
+
+        .monitor img {
+            width: 350px;
+            height: auto;
+            border-radius: 8px;
+            display: block;
+        }
+
+        .monitor-label {
+            text-align: center;
+            color: #888;
+            font-size: 0.95em;
+            margin-top: 8px;
+            font-weight: 500;
+        }
+
+        .sync-badge {
+            position: absolute;
+            top: -15px;
+            right: -15px;
+            background: linear-gradient(135deg, #4A90E2  0%, #4A90E2 100%);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(74, 158, 255, 0.4);
+            z-index: 10;
+        }
+
+        @media (max-width: 1200px) {
+            .arrow { display: none; }
+            .frontend-layer { gap: 40px; }
+        }
+
+        @media (max-width: 768px) {
+            .title { font-size: 1.8em; }
+            .subtitle { font-size: 1.3em; }
+            .monitor img { width: 250px; }
+            .admin-layer { display: none; }
+            .frontend-layer { margin-top: 20px; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <p class="subtitle">Zentrale Verwaltung → Tablet-Steuerung → Synchrone Wiedergabe</p>
+
+    <div class="mockup-container">
+        <!-- Admin Background Layer -->
+        <div class="admin-layer">
+            <div class="admin-label">Musea Admin</div>
+            <div class="device">
+                <img src="musea-admin.png   " alt="Admin Interface" id="adminImg">
+            </div>
+        </div>
+
+        <!-- Frontend Layer -->
+        <div class="frontend-layer">
+            <!-- Guide Tablet -->
+            <div>
+                <div class="device-label">Musea Guide (Tablet)</div>
+                <div class="guide-device">
+                    <img src="musea-guide.png" alt="Guide Interface" id="guideImg">
+                </div>
+            </div>
+
+            <!-- Arrow -->
+            <div class="arrow">→</div>
+
+            <!-- Monitors -->
+            <div>
+                <div class="device-label" style="margin-top: 25px;">Musea Player (Displays)</div>
+                <div class="monitors">
+                    <div class="monitor">
+                        <img src="musea-player.png" alt="Display 1" id="display1">
+                        <div class="monitor-label">Player 1</div>
+                    </div>
+                    <div class="monitor">
+                        <div class="sync-badge">synchron</div>
+                        <img src="musea-player.png" alt="Display 2" id="display2">
+                        <div class="monitor-label">Player 2</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    // Note: In actual implementation, replace the placeholder images above
+    // For now, using solid colors as fallback
+    document.getElementById('guideImg').style.background = '#2a2a2a';
+    document.getElementById('adminImg').style.background = '#2a2a2a';
+    document.getElementById('display1').style.background = '#000';
+    document.getElementById('display2').style.background = '#000';
+</script>
+</body>
+</html>
