@@ -42,7 +42,7 @@
         }
 
         .mockup-image {
-            max-width: 1300px;
+            width: 100%;
             background: rgba(255,255,255,0.05);
             padding: 20px;
             border-radius: 20px;
@@ -349,7 +349,7 @@
         <p>System zur zentralen Steuerung von Multimedia-Installationen</p>
 
         <div class="mockup-image">
-            <iframe src="screenshot.html" style="width: 100%; min-height: 850px; height:100%; border: none; border-radius: 12px;"></iframe>
+            <iframe src="screenshot.html" style="width: 100%; border: none; border-radius: 12px;"></iframe>
         </div>
     </div>
 </section>
@@ -516,4 +516,20 @@
     </div>
 </footer>
 </body>
+<script>
+    function resizeIframe() {
+        var iframe = document.querySelector('.mockup-image iframe');
+        var iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
+
+        // Get the content height inside the iframe
+        var contentHeight = iframeDocument.body.scrollHeight;
+
+        // Set the iframe height to the content height
+        iframe.style.height = contentHeight + 'px';
+    }
+
+    // Call the resize function when the page loads or content changes inside the iframe
+    window.addEventListener('load', resizeIframe);
+    window.addEventListener('resize', resizeIframe);
+</script>
 </html>
