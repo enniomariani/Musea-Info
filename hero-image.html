@@ -97,6 +97,33 @@
         }
 
         /* Guide Tablet */
+        .play-overlay {
+            position: absolute;
+            width: calc(100% - 40px);
+            height: calc(100% - 40px);
+
+            border-radius: 12px;
+            background: rgba(24, 24, 24, 0.9);
+
+            cursor: pointer;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .play-pause-icon {
+            width: 150px;
+            height: 150px;
+
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 100px;
+        }
+
+        /*.play-pause-icon:hover{*/
+
+        /*}*/
+
         .guide-device {
             background: #2a2a2a;
             border-radius: 20px;
@@ -118,7 +145,7 @@
             border-radius: 3px;
         }
 
-        .guide-device img {
+        .guide-device-image {
             width: 100%;
             border-radius: 12px;
             display: block;
@@ -175,7 +202,7 @@
             border-radius: 0 0 8px 8px;
         }
 
-        .monitor img {
+        .monitor video {
             width: 100%;
             height: auto;
             border-radius: 8px;
@@ -205,9 +232,10 @@
         }
 
         @media (max-width: 1078px) {
-            .mockup-container{
+            .mockup-container {
                 flex-direction: column;
             }
+
             .frontend-layer {
                 flex-direction: column;
                 margin-top: 0;
@@ -242,7 +270,7 @@
                 font-size: 0.8em;
             }
 
-            .arrow{
+            .arrow {
                 font-size: 2em;
             }
 
@@ -265,6 +293,11 @@
                 padding: 10px
             }
 
+            .play-overlay{
+                width: calc(100% - 20px);
+                height: calc(100% - 20px);
+            }
+
             .admin-layer device {
                 padding: 8px
             }
@@ -273,14 +306,15 @@
 </head>
 <body>
 <div class="container">
-    <p class="subtitle"><span>Zentrale Verwaltung</span> <span>→ Tablet-Steuerung</span> <span>→ Synchrone Wiedergabe</span></p>
+    <p class="subtitle"><span>Zentrale Verwaltung</span> <span>→ Tablet-Steuerung</span>
+        <span>→ Synchrone Wiedergabe</span></p>
 
     <div class="mockup-container">
         <!-- Admin Background Layer -->
         <div class="admin-layer">
             <div class="device-label">Musea Admin</div>
             <div class="device">
-                <img src="musea-admin.png" alt="Admin Interface" id="adminImg">
+                <img src="media/musea-admin.png" alt="Admin Interface" id="adminImg">
             </div>
         </div>
 
@@ -293,7 +327,11 @@
             <div>
                 <div class="device-label">Musea Guide (Tablet)</div>
                 <div class="guide-device">
-                    <img src="musea-guide.png" alt="Guide Interface" id="guideImg">
+                    <div id="guide-play-overlay" class="play-overlay">
+                        <img src="media/play.svg" class="play-pause-icon" id="playBtn">
+                        <img src="media/pause.svg" class="play-pause-icon" id="pauseBtn">
+                    </div>
+                    <img src="media/musea-guide.png" class="guide-device-image" alt="Guide Interface" id="guideImg">
                 </div>
             </div>
 
@@ -305,12 +343,12 @@
                 <div class="device-label" style="margin-top: 25px;">Musea Player (Displays)</div>
                 <div class="monitors">
                     <div class="monitor">
-                        <img src="musea-player.png" alt="Display 1" id="display1">
+                        <video src="media/earth.mp4" id="display1" preload="auto" poster=""></video>
                         <div class="monitor-label">Player 1</div>
                     </div>
                     <div class="monitor">
                         <div class="sync-badge">synchron</div>
-                        <img src="musea-player.png" alt="Display 2" id="display2">
+                        <video src="media/earth.mp4" id="display2"></video>
                         <div class="monitor-label">Player 2</div>
                     </div>
                 </div>
@@ -319,4 +357,44 @@
     </div>
 </div>
 </body>
+<script>
+
+    const video1 = document.getElementById('display1');
+    const video2 = document.getElementById('display2');
+    const playBtn = document.getElementById('playBtn');
+    const pauseBtn = document.getElementById('pauseBtn');
+    const playOverlay = document.getElementById('guide-play-overlay');
+
+    let firstPlay = true;
+    let playing = false;
+
+    playBtn.style.display = 'block';
+    pauseBtn.style.display = 'none';
+
+    playOverlay.addEventListener('mousedown', async () => {
+
+        if(playing){
+            playBtn.style.display = 'block';
+            pauseBtn.style.display = 'none';
+
+            await video1.pause();
+            await video2.pause();
+        }else{
+            playBtn.style.display = 'none';
+            pauseBtn.style.display = 'block';
+
+            await video1.play();
+            await video2.play();
+        }
+
+        playing = !playing;
+
+        if(firstPlay){
+            playOverlay.addEventListener('mouseover', ()=>{ console.log("hover"); playOverlay.style.opacity = '1'});
+            playOverlay.addEventListener('mouseout', ()=>{ console.log("hover"); playOverlay.style.opacity = '0'});
+            firstPlay = false;
+        }
+
+    });
+</script>
 </html>
