@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Musea - System zur zentralen Steuerung von Multimedia-Installationen in Museen und Ausstellungen">
+    <meta name="description"
+          content="Musea - System zur zentralen Steuerung von Multimedia-Installationen in Museen und Ausstellungen">
     <title>Musea - Multimedia-Steuerung für Museen</title>
     <style>
         * {
@@ -12,8 +13,12 @@
             box-sizing: border-box;
         }
 
+        a{
+            text-decoration: none;
+        }
+
         body {
-            font-family:'Inter', sans-serif;
+            font-family: 'Inter', sans-serif;
             line-height: 1.6;
             color: #333;
             background: #fff;
@@ -43,10 +48,10 @@
 
         .mockup-image {
             width: 100%;
-            background: rgba(255,255,255,0.05);
+            background: rgba(255, 255, 255, 0.05);
             padding: 20px;
             border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
         }
 
         /* Container */
@@ -93,13 +98,13 @@
             background: white;
             padding: 40px 30px;
             border-radius: 16px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .feature-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
         }
 
         .feature-icon {
@@ -192,12 +197,12 @@
             font-size: 1.1em;
             margin-top: 30px;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
 
         .cta-button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
         }
 
         /* Developers Section */
@@ -408,7 +413,8 @@
         </div>
 
         <div class="reference-box">
-            <strong>Beispiel:</strong> Für eine Kinder-Führung erstellt das Museumspersonal eine Playlist mit allen kindgerecht aufbereiteten Inhalten – per Tablet abrufbar während der Führung.
+            <strong>Beispiel:</strong> Für eine Kinder-Führung erstellt das Museumspersonal eine Playlist mit allen
+            kindgerecht aufbereiteten Inhalten – per Tablet abrufbar während der Führung.
         </div>
     </div>
 </section>
@@ -437,7 +443,8 @@
 
             <div class="reference-box">
                 <strong>Referenz:</strong> Aktuell im Einsatz im
-                <a href="https://naturama.ch/" target="_blank" style="color: #4A90E2; text-decoration: none;">Naturama Aargau</a>
+                <a href="https://naturama.ch/" target="_blank" style="color: #4A90E2; text-decoration: none;">Naturama
+                    Aargau</a>
             </div>
         </div>
     </div>
@@ -461,30 +468,40 @@
         <h3 style="text-align: center; margin: 60px 0 30px; font-size: 1.8em;">Programme & Bibliotheken</h3>
 
         <div class="architecture-grid">
-            <div class="arch-card">
-                <h4>Musea Player</h4>
-                <p>Playback von Medien & DMX-Lichtsteuerung</p>
-            </div>
+            <a href="https://github.com/enniomariani/Musea-Player" target="_blank">
+                <div class="arch-card">
+                    <h4>Musea Player</h4>
+                    <p>Playback von Medien & DMX-Lichtsteuerung</p>
+                </div>
+            </a>
 
+            <a href="https://github.com/enniomariani/Musea-Admin" target="_blank">
             <div class="arch-card">
                 <h4>Musea Admin</h4>
                 <p>Zentrale Verwaltung von Medienstationen</p>
             </div>
+            </a>
 
+            <a href="https://github.com/enniomariani/Musea-Guide" target="_blank">
             <div class="arch-card">
                 <h4>Musea Guide</h4>
                 <p>Tablet-App für die Steuerung der Stationen</p>
             </div>
+            </a>
 
+            <a href="https://github.com/enniomariani/musea-client" target="_blank">
             <div class="arch-card">
-                <h4>musea-client</h4>
-                <p>npm-Bibliothek für die Verwaltung/Steuerung der Player</p>
+                <h4>musea-client (npm)</h4>
+                <p>Verwaltung/Steuerung der Player</p>
             </div>
+            </a>
 
+            <a href="https://github.com/enniomariani/musea-server" target="_blank">
             <div class="arch-card">
-                <h4>musea-server</h4>
-                <p>npm-Bibliothek für alle Player</p>
+                <h4>musea-server (npm)</h4>
+                <p>Backend für die Player</p>
             </div>
+            </a>
         </div>
 
         <div style="text-align: center; margin-top: 50px;">
@@ -508,12 +525,14 @@
 
                 <div class="footer-section">
                     <h4>Förderung</h4>
-                    <p>Dieses Projekt wurde größtenteils durch das <a href="https://naturama.ch/" target="_blank">Naturama Aargau</a> finanziert.</p>
+                    <p>Dieses Projekt wurde größtenteils durch das <a href="https://naturama.ch/" target="_blank">Naturama
+                        Aargau</a> finanziert.</p>
                 </div>
 
                 <div class="footer-section">
                     <h4>Credits</h4>
-                    <p>Design & UX: <a href="https://www.linkedin.com/in/niklas-dunke-5b9044191/" target="_blank">Niklas Dunke</a><br>
+                    <p>Design & UX: <a href="https://www.linkedin.com/in/niklas-dunke-5b9044191/" target="_blank">Niklas
+                        Dunke</a><br>
                         Entwicklung: <a href="https://enniomariani.ch" target="_blank">Ennio Mariani</a></p>
                 </div>
             </div>
