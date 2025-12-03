@@ -9,6 +9,8 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+
+            user-select: none;
         }
 
         body {
@@ -84,6 +86,25 @@
             display: block;
         }
 
+        .dimm-container{
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1;
+
+            width: 100vw;
+            height: 100vh;
+
+            background: rgba(0, 0, 0, 0.7);
+
+            opacity: 0;
+            transition: opacity 0.5s ease-in;
+        }
+
+        .dimm-container.visible {
+            opacity: 1;
+        }
+
         /* Frontend Layer */
         .frontend-layer {
             position: relative;
@@ -119,10 +140,6 @@
             background: rgba(0, 0, 0, 0.4);
             border-radius: 100px;
         }
-
-        /*.play-pause-icon:hover{*/
-
-        /*}*/
 
         .guide-device {
             background: #2a2a2a;
@@ -293,9 +310,14 @@
                 padding: 10px
             }
 
-            .play-overlay{
+            .play-overlay {
                 width: calc(100% - 20px);
                 height: calc(100% - 20px);
+            }
+
+            .play-pause-icon{
+                width: 80px;
+                height: 80px;
             }
 
             .admin-layer device {
@@ -317,6 +339,8 @@
                 <img src="media/musea-admin.png" alt="Admin Interface" id="adminImg">
             </div>
         </div>
+
+        <div class="dimm-container"></div>
 
         <!-- Arrow 1 -->
         <div class="arrow arrow-1">→</div>
@@ -365,23 +389,49 @@
     const pauseBtn = document.getElementById('pauseBtn');
     const playOverlay = document.getElementById('guide-play-overlay');
 
+    const dimmContainer = document.querySelector('.dimm-container');
+
     let firstPlay = true;
     let playing = false;
 
     playBtn.style.display = 'block';
     pauseBtn.style.display = 'none';
 
+    video1.addEventListener('ended', async () => {
+        playOverlay.removeEventListener('mouseover', onMouseOverGuideApp);
+        playOverlay.removeEventListener('mouseout', onMouseOutGuideApp);
+
+        await video1.pause();
+        await video2.pause();
+
+        video1.currentTime = 0;
+        video2.currentTime = 0;
+
+        playOverlay.style.opacity = '1';
+        playBtn.style.display = 'block';
+        pauseBtn.style.display = 'none';
+
+        dimmContainer.classList.remove('visible');
+
+        firstPlay = true;
+        playing = false;
+    })
+
     playOverlay.addEventListener('mousedown', async () => {
 
-        if(playing){
+        if (playing) {
             playBtn.style.display = 'block';
             pauseBtn.style.display = 'none';
 
+            dimmContainer.classList.remove('visible');
+
             await video1.pause();
             await video2.pause();
-        }else{
+        } else {
             playBtn.style.display = 'none';
             pauseBtn.style.display = 'block';
+
+            dimmContainer.classList.add('visible');
 
             await video1.play();
             await video2.play();
@@ -389,12 +439,20 @@
 
         playing = !playing;
 
-        if(firstPlay){
-            playOverlay.addEventListener('mouseover', ()=>{ console.log("hover"); playOverlay.style.opacity = '1'});
-            playOverlay.addEventListener('mouseout', ()=>{ console.log("hover"); playOverlay.style.opacity = '0'});
+        if (firstPlay) {
+            playOverlay.addEventListener('mouseover', onMouseOverGuideApp);
+            playOverlay.addEventListener('mouseout', onMouseOutGuideApp);
             firstPlay = false;
         }
 
     });
+
+    function onMouseOverGuideApp() {
+        playOverlay.style.opacity = '1';
+    }
+
+    function onMouseOutGuideApp() {
+        playOverlay.style.opacity = '0'
+    }
 </script>
 </html>
